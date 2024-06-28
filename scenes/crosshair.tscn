@@ -1,0 +1,63 @@
+[gd_scene load_steps=2 format=3 uid="uid://c5ynotxcw3hha"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_iqi36"]
+font_size = 76
+
+[node name="Crosshair" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.2, 0.2)
+
+[node name="Line2D" type="Line2D" parent="Control"]
+position = Vector2(50, 1.995)
+points = PackedVector2Array(55, 0, 0, 0)
+begin_cap_mode = 2
+end_cap_mode = 2
+
+[node name="Line2D2" type="Line2D" parent="Control"]
+position = Vector2(-100, 2.105)
+points = PackedVector2Array(55, 0, 0, 0)
+begin_cap_mode = 2
+end_cap_mode = 2
+
+[node name="Line2D3" type="Line2D" parent="Control"]
+position = Vector2(-0.36, 40)
+rotation = 1.5708
+points = PackedVector2Array(55, 0, 0, 0)
+begin_cap_mode = 2
+end_cap_mode = 2
+
+[node name="Line2D4" type="Line2D" parent="Control"]
+position = Vector2(-0.36, -36)
+rotation = -1.5708
+points = PackedVector2Array(55, 0, 0, 0)
+begin_cap_mode = 2
+end_cap_mode = 2
+
+[node name="Label" type="Label" parent="Control"]
+layout_mode = 0
+offset_left = -20.0
+offset_top = -75.0
+offset_right = 20.0
+offset_bottom = 30.0
+text = "."
+label_settings = SubResource("LabelSettings_iqi36")
+horizontal_alignment = 1

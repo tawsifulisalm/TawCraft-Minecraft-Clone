@@ -1,0 +1,74 @@
+[gd_scene load_steps=14 format=3 uid="uid://diugdnhb5ip0d"]
+
+[ext_resource type="Script" path="res://scripts/player.gd" id="1_cwyup"]
+[ext_resource type="Texture2D" uid="uid://dnm2viwk0v2h7" path="res://resources/icons/wood_plank.png" id="2_sj0xm"]
+[ext_resource type="Texture2D" uid="uid://c3fvirv4wme7g" path="res://resources/icons/wood.png" id="3_atay3"]
+[ext_resource type="Texture2D" uid="uid://bykx73qw6wbiy" path="res://resources/icons/dirt.png" id="4_5ky4h"]
+[ext_resource type="Texture2D" uid="uid://vi2q3qw73lnd" path="res://resources/icons/brick_grey.png" id="5_gdbmb"]
+[ext_resource type="Texture2D" uid="uid://bk4qnk05p6pxl" path="res://resources/icons/brick_yellow.png" id="6_6s04e"]
+[ext_resource type="Texture2D" uid="uid://co234c7e7jco8" path="res://resources/icons/stone.png" id="7_48vr1"]
+[ext_resource type="Texture2D" uid="uid://bbgv8tupw6f51" path="res://resources/icons/diamond_ore.png" id="8_b732t"]
+[ext_resource type="Texture2D" uid="uid://c0o4jkv7getiq" path="res://resources/icons/grass_block.png" id="9_5kn6o"]
+[ext_resource type="Texture2D" uid="uid://2qpvg0c2778l" path="res://resources/icons/leaf_block.png" id="10_gck8x"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_bnq1k"]
+radius = 0.9
+height = 3.6
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_dq8g3"]
+radius = 1.0
+height = 4.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pdhqu"]
+albedo_color = Color(0.116187, 0.249691, 1, 1)
+
+[node name="Player" type="CharacterBody3D"]
+script = ExtResource("1_cwyup")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_bnq1k")
+
+[node name="Body" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.9, 0, 0, 0, 0.9, 0, 0, 0, 0.9, 0, 0, 0)
+mesh = SubResource("CapsuleMesh_dq8g3")
+surface_material_override/0 = SubResource("StandardMaterial3D_pdhqu")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.919692, 0)
+fov = 110.0
+
+[node name="RayCast3D" type="RayCast3D" parent="Camera3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.762851, 0.618259)
+target_position = Vector3(0, 0, -10)
+
+[node name="HotBar" type="ItemList" parent="."]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -394.0
+offset_top = -72.0
+offset_right = 394.0
+grow_horizontal = 2
+grow_vertical = 0
+item_count = 9
+max_columns = 9
+item_0/text = "1"
+item_0/icon = ExtResource("2_sj0xm")
+item_1/text = "2"
+item_1/icon = ExtResource("3_atay3")
+item_2/text = "3"
+item_2/icon = ExtResource("4_5ky4h")
+item_3/text = "4"
+item_3/icon = ExtResource("5_gdbmb")
+item_4/text = "5"
+item_4/icon = ExtResource("6_6s04e")
+item_5/text = "6"
+item_5/icon = ExtResource("7_48vr1")
+item_6/text = "7"
+item_6/icon = ExtResource("8_b732t")
+item_7/text = "8"
+item_7/icon = ExtResource("9_5kn6o")
+item_8/text = "9"
+item_8/icon = ExtResource("10_gck8x")

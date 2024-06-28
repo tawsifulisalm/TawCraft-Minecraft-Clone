@@ -1,0 +1,50 @@
+[gd_scene load_steps=10 format=3 uid="uid://c72itoktjmofi"]
+
+[ext_resource type="Script" path="res://spatial.gd" id="1_ew8sx"]
+[ext_resource type="MeshLibrary" uid="uid://dy5bjctxh06fl" path="res://resources/blocks.tres" id="2_e82x5"]
+[ext_resource type="PackedScene" uid="uid://diugdnhb5ip0d" path="res://scenes/player.tscn" id="2_qs1qg"]
+[ext_resource type="Script" path="res://scripts/GridMap.gd" id="3_rvw6q"]
+[ext_resource type="PackedScene" uid="uid://dmr0fcamx7t56" path="res://addons/virtual_joystick/virtual_joystick_scene.tscn" id="6_4xqws"]
+[ext_resource type="Script" path="res://scripts/NoiseGeneratorNode.gd" id="6_bpiqd"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_2yv73"]
+sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+
+[sub_resource type="Sky" id="Sky_fggi5"]
+sky_material = SubResource("ProceduralSkyMaterial_2yv73")
+
+[sub_resource type="Environment" id="Environment_dm8or"]
+background_mode = 2
+sky = SubResource("Sky_fggi5")
+tonemap_mode = 2
+
+[node name="spatial" type="Node3D"]
+script = ExtResource("1_ew8sx")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_dm8or")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
+shadow_enabled = true
+
+[node name="GridMap" type="GridMap" parent="."]
+mesh_library = ExtResource("2_e82x5")
+script = ExtResource("3_rvw6q")
+
+[node name="Player" parent="." instance=ExtResource("2_qs1qg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 133.594, 0)
+
+[node name="NoiseGeneratorNode" type="Node" parent="."]
+script = ExtResource("6_bpiqd")
+
+[node name="Virtual Joystick" parent="." instance=ExtResource("6_4xqws")]
+offset_left = -2.0
+offset_top = -275.0
+offset_right = 209.0
+offset_bottom = -69.0
+action_left = "left"
+action_right = "right"
+action_up = "up"
+action_down = "down"
